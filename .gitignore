@@ -1,0 +1,11 @@
+# Configuration files
+.vscode
+*.json
+.DS_Store
+*.dSYM
+
+# Common files
+*.o
+*.a
+*.out
+obj/
