@@ -60,6 +60,7 @@ int	connect_socket(int server_socket)
 	socklen_t client_addr_size;
 
 	client_addr_size = sizeof(client_addr);
+	printf("Waiting client...\n");
 	client_socket = accept(server_socket, (struct sockaddr *)&client_addr, &client_addr_size);
 	if (client_socket == -1)
 		print_error("Error occured in accept");
