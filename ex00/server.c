@@ -64,7 +64,7 @@ int	connect_socket(int server_socket)
 	if (client_socket == -1)
 		print_error("Error occured in accept");
 	printf("Found client!\n");
-	message = "Server connected!\n";
+	message = "Server connected!";
 	write(client_socket, message, strlen(message));
 }
 
