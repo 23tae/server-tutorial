@@ -1,32 +1,33 @@
 # Server tutorial
 
 # Compile
-- create executables : type `make`
-- delete executables : type `make fclean`
-- delete and create executables : type `make re`
+- Create executables : type `make`
+- Delete executables : type `make fclean`
+- Rebuild executables : type `make re`
 
 # Usage
-1. You should know your current IP address
-    - for Linux
-        ```shell
-        hostname -i
-        ```
-    - for macOS
-        - ethernet
-            ```shell
-            ipconfig getifaddr en0
-            ```
-        - Wi-Fi
-            ```shell
-            ipconfig getifaddr en1
-            ```
-2. run server (port number you want)
+1. Run server
     ```shell
     ./server <port_number>
     ```
-3. run client
+    - port_number : port that server will open
+2. Run client
     ```shell
-    ./client <IP_address> <port_number>
+    ./client <ip_address> <port_number>
     ```
-    - IP address of step 1
-    - Port number of step 2
+
+    - ip_address
+        - for Linux
+            ```shell
+            hostname -i
+            ```
+        - for macOS
+            - ethernet
+                ```shell
+                ipconfig getifaddr en0
+                ```
+            - Wi-Fi
+                ```shell
+                ipconfig getifaddr en1
+                ```
+    - port_number : server's port number
