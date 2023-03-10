@@ -66,6 +66,7 @@ int	connect_socket(int server_socket)
 	printf("Found client!\n");
 	message = "Server connected!";
 	write(client_socket, message, strlen(message));
+	return (client_socket);
 }
 
 int	main(int argc, char **argv)
