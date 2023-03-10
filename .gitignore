@@ -9,3 +9,7 @@
 *.a
 *.out
 obj/
+
+# Etc
+server
+client
