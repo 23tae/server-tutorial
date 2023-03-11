@@ -60,23 +60,14 @@ int	connect_socket(int listening_socket)
 	return (connection_socket);
 }
 
-void	listen_message(int connection_socket)
+void	send_message(int connection_socket)
 {
-	ssize_t	bytes = 0;
-	size_t	len = 0;
-	char *buffer = NULL;
-	char send_buffer[1024];
+	char *message;
 
-	while (1)
-	{
-		printf("Message : ");
-		if ((bytes = getline(&buffer, &len, stdin)) == -1)
-			break;
-		snprintf(send_buffer, 12, "HTTP/1.1 200 OK\r\nContent-Length:%d\r\n\r\n%s", (int)(45 + bytes), buffer);
-		if (send(connection_socket, send_buffer, bytes, 0) == -1)
-			print_error("Error in send");
-		sleep(1);
-	}
+	message = "HTTP/1.1 200 OK\r\nContent-Length:12\r\n\r\nhello world!";
+	if (send(connection_socket, message, 56, 0) == -1)
+		print_error("Error in send");
+	printf("Message transmitted.\n");
 }
 
 int	main(int argc, char **argv)
@@ -89,8 +80,8 @@ int	main(int argc, char **argv)
 
 	listening_socket = init_listening_socket(argv[1]);
 	connection_socket = connect_socket(listening_socket);
-	listen_message(connection_socket);
-	printf("Socket closed\n");
+	send_message(connection_socket);
+	printf("Socket closed.\n");
 	close(connection_socket);
 	close(listening_socket);
 	return (0);

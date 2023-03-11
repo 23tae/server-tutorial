@@ -91,7 +91,7 @@ int	main(int argc, char **argv)
 	listening_socket = init_listening_socket(argv[1]);
 	connection_socket = connect_socket(listening_socket);
 	listen_message(connection_socket);
-	printf("Socket closed\n");
+	printf("Socket closed.\n");
 	close(connection_socket);
 	close(listening_socket);
 	return (0);

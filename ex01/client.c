@@ -57,7 +57,7 @@ int	main(int argc, char **argv)
 	if (connect(connection_socket, (struct sockaddr *)&server_addr, sizeof(server_addr)) == -1)
 		print_error("Error in connect");
 	send_message(connection_socket);
-	printf("\nSocket closed\n");
+	printf("\nSocket closed.\n");
 	close(connection_socket);
 	return (0);
 }
