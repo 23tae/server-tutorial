@@ -22,23 +22,24 @@ void	init_server_addr(struct sockaddr_in *server_addr, char *ip_addr, int port)
 
 void	send_message(int client_socket)
 {
-    int num_bytes;
-	char send_buffer[1024];
+	ssize_t	bytes = 0;
+	size_t	len = 0;
+    int received_bytes = 0;
+	char *send_buffer = NULL;
 	char receive_buffer[1024];
 
-	memset(send_buffer, 0, sizeof(send_buffer));
 	memset(receive_buffer, 0, sizeof(receive_buffer));
 	printf("Connected to server!\n");
 	while (1)
 	{
-		printf("Send message : ");
-		if (scanf("%s", send_buffer) == -1)
+		printf("Sent message : ");
+		if ((bytes = getline(&send_buffer, &len, stdin)) == -1)
 			break;
-		if (send(client_socket, send_buffer, strlen(send_buffer), 0) == -1)
+		if (send(client_socket, send_buffer, bytes, 0) == -1)
 			print_error("Error in send");
-		if ((num_bytes = read(client_socket, receive_buffer, sizeof(receive_buffer))) < 0)
+		if ((received_bytes = read(client_socket, receive_buffer, sizeof(receive_buffer))) < 0)
 			print_error("Error in read");
-		printf("Receive message : %.*s\n", num_bytes, receive_buffer);
+		printf("Received message : %.*s", received_bytes, receive_buffer);
 	}
 }
 int	main(int argc, char **argv)
@@ -56,6 +57,7 @@ int	main(int argc, char **argv)
 	if (connect(client_socket, (struct sockaddr *)&server_addr, sizeof(server_addr)) == -1)
 		print_error("Error in connect");
 	send_message(client_socket);
+	printf("\nSocket closed\n");
 	close(client_socket);
 	return (0);
 }

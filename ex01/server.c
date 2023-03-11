@@ -4,6 +4,7 @@
 #include <unistd.h> // sockaddr_in, read, write
 #include <arpa/inet.h> // htnol, htons, INADDR_ANY, sockaddr_in
 #include <sys/socket.h>
+#include <stdbool.h>
 
 void	print_error(char *message)
 {
@@ -70,14 +71,19 @@ int	connect_socket(int server_socket)
 void	listen_message(int client_socket)
 {
     char buffer[1024];
-    int num_bytes;
+    int num_bytes = 0;
+	bool is_first = false;
     
-	printf("<Received message>\n");
     // Read from the client until the connection is closed
     while ((num_bytes = read(client_socket, buffer, sizeof(buffer))) > 0)
 	{
+		if (is_first == false)
+		{
+			printf("<Received message>\n");
+			is_first = true;
+		}
         // Process the message received from the client
-		printf("%.*s\n", num_bytes, buffer);
+		printf("%.*s", num_bytes, buffer);
 		write(client_socket, buffer, num_bytes);
     }
 }
@@ -93,7 +99,7 @@ int	main(int argc, char **argv)
 	server_socket = init_server_socket(argv[1]);
 	client_socket = connect_socket(server_socket);
 	listen_message(client_socket);
-	printf("Close connection.\n");
+	printf("Socket closed\n");
 	close(client_socket);
 	close(server_socket);
 	return (0);
