@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <unistd.h> // sockaddr_in, read, write
-#include <arpa/inet.h> // htnol, htons, INADDR_ANY, sockaddr_in
+#include <unistd.h>
+#include <arpa/inet.h>
 #include <sys/socket.h>
 #include <stdbool.h>
 
@@ -13,12 +13,6 @@ void	print_error(char *message)
 	exit(1);
 }
 
-/**
- * @brief Initialize server. Set IP address and Port.
- * 
- * @param server_addr server setting
- * @param port port number
- */
 void	init_server_addr(struct sockaddr_in *server_addr, char *port)
 {
 	memset(server_addr, 0, sizeof(*server_addr));
@@ -27,12 +21,6 @@ void	init_server_addr(struct sockaddr_in *server_addr, char *port)
 	server_addr->sin_port = htons(atoi(port)); // Port
 }
 
-/**
- * @brief Initialize socket.
- * 
- * @param port port number
- * @return int socket descriptor
- */
 int	init_listening_socket(char *port)
 {
 	int	listening_socket;
