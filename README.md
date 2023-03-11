@@ -10,6 +10,8 @@
     - server prints the received message.
     - server sends it back to client.
     - client prints the received message.
+- ex02
+    - connect to server using web browser.
 
 # Compile
 - Create executables : type `make`
