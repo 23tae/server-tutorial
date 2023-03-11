@@ -1,5 +1,16 @@
 # Server tutorial
 
+# About
+## client-server program
+- ex00
+    - server sends to client a short message.
+    - client prints the received message.
+- ex01
+    - client sends to server what user typed.
+    - server prints the received message.
+    - server sends it back to client.
+    - client prints the received message.
+
 # Compile
 - Create executables : type `make`
 - Delete executables : type `make fclean`
