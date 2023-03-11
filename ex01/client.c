@@ -24,8 +24,8 @@ void	send_message(int connection_socket)
 {
 	ssize_t	bytes = 0;
 	size_t	len = 0;
-    int received_bytes = 0;
 	char *send_buffer = NULL;
+    int received_bytes = 0;
 	char receive_buffer[1024];
 
 	memset(receive_buffer, 0, sizeof(receive_buffer));
