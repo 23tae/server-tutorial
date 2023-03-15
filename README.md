@@ -26,21 +26,6 @@
     - port_number : port that server will open
 2. Run client
     ```shell
-    ./client <ip_address> <port_number>
+    ./client 127.0.0.1 <port_number>
     ```
-
-    - ip_address
-        - for Linux
-            ```shell
-            hostname -i
-            ```
-        - for macOS
-            - ethernet
-                ```shell
-                ipconfig getifaddr en0
-                ```
-            - Wi-Fi
-                ```shell
-                ipconfig getifaddr en1
-                ```
     - port_number : server's port number
